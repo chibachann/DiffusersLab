@@ -1,6 +1,7 @@
 version: '3'
 services:
   diffusers-lab:
+    container_name: my-diffusers-lab
     image: diffusers-lab
     stdin_open: true
     tty: true

@@ -14,7 +14,6 @@ class TrainingConfig:
     mixed_precision = 'fp16'  # `no` for float32, `fp16` for automatic mixed precision
     output_dir = 'ddpm-butterflies-128'  # the model namy locally and on the HF Hub
 
-    push_to_hub = True  # whether to upload the saved model to the HF Hub
     hub_private_repo = False  
     overwrite_output_dir = True  # overwrite the old model when re-running the notebook
     seed = 0
