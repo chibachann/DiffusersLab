@@ -1,0 +1,22 @@
+version: '3'
+services:
+  diffusers-lab:
+    image: diffusers-lab
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+    working_dir: /app
+    volumes:
+      - ./:/app
+    deploy:
+      restart_policy:
+        condition: none
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    build:
+      context: .
+      dockerfile: Dockerfile
