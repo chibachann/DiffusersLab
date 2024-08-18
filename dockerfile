@@ -1,5 +1,8 @@
 FROM chibachann/cuda-pytorch:12.1-2.2.2-py3.11
 
+ENV HTTP_PROXY="http://fumi.elect.chuo-u.ac.jp:8080"
+ENV HTTPS_PROXY="http://fumi.elect.chuo-u.ac.jp:8080"
+
 # 必要なライブラリをインストール
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

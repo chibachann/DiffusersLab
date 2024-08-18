@@ -11,7 +11,8 @@ from src.noise_scheduler import noise_image
 import train
 
 def main():
-    dataset = LoadDataset()
+    dataset_name = "huggan/smithsonian_butterflies_subset"
+    dataset = LoadDataset(dataset_name)
     print(dataset)
     fig_show(dataset)
     dataset.set_transform(transform)
