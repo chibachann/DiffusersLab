@@ -2,3 +2,5 @@
 *.png
 *.pkl
 ddpm-butterflies-128/
+ddpm-flowers-102/
+imagefolder/

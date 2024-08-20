@@ -6,6 +6,12 @@ services:
     stdin_open: true
     tty: true
     command: /bin/bash
+    ports:
+      - "6006:6006" 
+    networks:
+      default:
+        aliases:
+          - tensorboard
     working_dir: /app
     volumes:
       - ./:/app
