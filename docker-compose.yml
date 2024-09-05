@@ -2,7 +2,7 @@ version: '3'
 services:
   diffusers-lab:
     container_name: my-diffusers-lab
-    image: diffusers-lab
+    image: chibachann/diffusers-lab:latest
     stdin_open: true
     tty: true
     command: /bin/bash
@@ -24,6 +24,4 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    build:
-      context: .
-      dockerfile: Dockerfile
+

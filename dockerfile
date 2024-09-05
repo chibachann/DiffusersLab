@@ -1,8 +1,36 @@
-FROM chibachann/cuda-pytorch:12.1-2.2.2-py3.11
+FROM nvcr.io/nvidia/cuda:12.4.1-devel-ubuntu22.04
 
-ENV HTTP_PROXY="http://fumi.elect.chuo-u.ac.jp:8080"
-ENV HTTPS_PROXY="http://fumi.elect.chuo-u.ac.jp:8080"
-ENV NO_PROXY="localhost,127.0.0.1"
+# 環境変数の設定
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+# 必要なパッケージのインストール
+RUN apt-get update && apt-get install -y \
+    nano \
+    git \
+    wget \
+    curl \
+    build-essential \
+    cmake \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    python3.11 \
+    python3.11-dev \
+    python3.11-distutils \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python 3.11をデフォルトに設定
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+RUN update-alternatives --set python3 /usr/bin/python3.11
+
+# pipのアップグレードと必要なパッケージのインストール
+RUN python3 -m pip install --upgrade pip setuptools wheel
+
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
 # 必要なライブラリをインストール
 COPY requirements.txt .
